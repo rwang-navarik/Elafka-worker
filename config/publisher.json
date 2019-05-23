@@ -1,0 +1,4 @@
+{
+  "transport": "file",
+  "path": "output.jsonlog"
+}

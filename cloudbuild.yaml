@@ -1,0 +1,9 @@
+
+steps:
+  -
+    name: gcr.io/${PROJECT_ID}/docker
+    args:
+      - build
+      - --tag
+      - service:test
+      - .

@@ -1,0 +1,33 @@
+substitutions:
+  _SERVICE_NAME: upgrade-worker
+
+steps:
+  -
+    name: gcr.io/${PROJECT_ID}/docker
+    args:
+      - 'build'
+      # - '--ssh'
+      # - 'default'
+      - '--tag'
+      - 'gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:latest'
+      - '--tag'
+      - 'gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:${COMMIT_SHA}'
+      - '.'
+  -
+    name: gcr.io/${PROJECT_ID}/docker
+    args:
+      - push
+      - gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:${COMMIT_SHA}
+  -
+    name: gcr.io/${PROJECT_ID}/rule-six-build
+    args:
+      - --action
+      - deploy
+      - --service
+      - ${_SERVICE_NAME}
+      - --version
+      - ${COMMIT_SHA}
+
+images:
+  - 'gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:latest'
+  - 'gcr.io/${PROJECT_ID}/${_SERVICE_NAME}:${COMMIT_SHA}'
