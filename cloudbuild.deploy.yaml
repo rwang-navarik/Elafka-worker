@@ -1,5 +1,5 @@
 substitutions:
-  _SERVICE_NAME: upgrade-worker
+  _SERVICE_NAME: elafka-worker
 
 steps:
   -

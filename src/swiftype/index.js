@@ -1,0 +1,1 @@
+const SwiftypeAppSearchClient = require('swiftype-app-search-node')

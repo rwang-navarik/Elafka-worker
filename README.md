@@ -1,6 +1,5 @@
-# Upgrade Worker
-
-Upgrade CDC objects to Events
+# Comment Index Worker
+Filter and update Comment Index 
 
 ## Run locally
 
